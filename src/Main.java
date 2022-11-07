@@ -21,10 +21,8 @@ public class Main {
         System.out.println();
         //Задача №3
         int totalStrength = 12_000_000;
-        int fertility = totalStrength / 1000 * 17; //204 000
-        int mortality = totalStrength / 1000 * 8; // 96 000
         for (int years = 1; years <= 10; years++) {
-            System.out.println("год : " + years + " численность населения составляет  = " + (totalStrength += fertility - mortality));
+            System.out.println("год : " + years + " численность населения составляет  = " + (totalStrength += (totalStrength / 1000 * 17) - (totalStrength / 1000 * 8)));
         }
         //Задача №4
         int depositSum = 15000;
@@ -54,25 +52,26 @@ public class Main {
             }
         }
         //Задача №7
-        int friday = 4;
+        int friday = 2;
         for (int i = 1; i < 31; i++) {
-            if (i % 7 == 4) {
+            if (i % 7 == friday) {
                 System.out.println(i + " friday");
             }
         }
         //Задача №8
         int comet = 79;
         int year = 2022;
-        for (int i = 0; i < year + 100; i++) {
-            if (i > (year - 200) || i > (year + 100))
-                if (i % comet == 0) {
-                    System.out.println(i);
-                }
+        int earlyYear = year - 200;
+        int afterYear = year + 100;
+        for (int i = 0; i <= afterYear; i++) {
+            if (i >= earlyYear && i % comet == 0) {
+                System.out.println(i);
+            }
         }
         //Задача №9
         for (int i = 1; i <= 20; i++) {
             if (i % 2 == 0) {
-                System.out.println(2 + " * " + (i/2) +  " = " + i);
+                System.out.println(2 + " * " + (i / 2) + " = " + i);
             }
         }
     }
