@@ -2,23 +2,31 @@ package org.example;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 public class UserImpl implements UserService {
     Map<Integer, User> usermap = new HashMap<>();
 
-    User addUser(User user) {
+    @Override
+    public User addUser(User user) {
         return usermap.put(user.getId(), user);
     }
 
-    Map<Integer, User> allUsers() {
+    @Override
+    public Map<Integer, User> allUsers() {
         return usermap;
     }
 
-    User getUser(int id) {
-        return usermap.get(id);
+    @Override
+    public User getUser(int id) {
+        if (usermap.get(id) != null) {
+            return usermap.get(id);
+        }
+        throw new NoSuchElementException("Данный пользователь не найден" + id);
     }
 
-    void deleteUser(int id) {
+    @Override
+    public void deleteUser(int id) {
         usermap.remove(id);
     }
 

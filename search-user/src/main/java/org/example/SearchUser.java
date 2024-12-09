@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class searchUser {
+public class SearchUser {
     private User user;
     private String nameUser;
 }

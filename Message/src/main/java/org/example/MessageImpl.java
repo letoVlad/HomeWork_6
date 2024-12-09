@@ -9,20 +9,23 @@ public class MessageImpl implements MessageService {
     Map<Integer, Message> messagesMap = new HashMap<>();
     UserImpl userImpl;
 
+
     public MessageImpl(UserImpl userImpl) {
         this.userImpl = userImpl;
     }
 
-    Message newMessage(Message message) {
+    @Override
+    public Message newMessage(Message message) {
         return messagesMap.put(message.getId(), message);
     }
 
-
-    Map<Integer, Message> allMessages() {
+    @Override
+    public Map<Integer, Message> allMessages() {
         return messagesMap;
     }
 
-    void sendMessage(Message message, User user) {
+    @Override
+    public void sendMessage(Message message, User user) {
         if (userImpl.getUser(user.getId()) != null) {
             messagesMap.put(message.getId(), message);
             List<Integer> messageList = user.getMessageIds();
@@ -34,7 +37,8 @@ public class MessageImpl implements MessageService {
         }
     }
 
-    void deleteMessage(Message message) {
+    @Override
+    public void deleteMessage(Message message) {
         messagesMap.remove(message.getId());
     }
 }
